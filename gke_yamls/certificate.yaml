@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+
+kind: Certificate
+metadata:
+  name: youdaodai-com-tls
+spec:
+  secretName: youdaodai-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+    group: cert-manager.io
+  commonName: youdaodai.com
+  dnsNames:
+    - youdaodai.com
+    - www.youdaodai.com
+    - license.youdaodai.com

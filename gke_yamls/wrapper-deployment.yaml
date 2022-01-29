@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wrapper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: wrapper
+  template:
+    metadata:
+      labels:
+        component: wrapper
+    spec:
+      containers:
+        - name: wrapper
+          image: aleczheng/tool-wrapper
+          resources:
+            limits:
+              cpu: "1"
+              memory: "200Mi"
+            requests:
+              cpu: "1"
+              memory: "100Mi"
+          ports:
+            - containerPort: 8081
+          env:
+            - name: MYSQL_HOST
+              value: db-mysql-cluster-ip
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-password
+                  key: MYSQL_PASSWORD
+            - name: ES_URL
+              value: 'https://quickstart-es-http:9200'
+            - name: ES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: quickstart-es-elastic-user
+                  key: elastic

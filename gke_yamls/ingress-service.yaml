@@ -1,0 +1,147 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+    - hosts:
+        - youdaodai.com
+        - www.youdaodai.com
+        - license.youdaodai.com
+      secretName: youdaodai-com
+    - hosts:
+        - compliance.openeuler.org
+      secretName: compliance-openeuler-org
+  rules:
+    - host: www.youdaodai.com
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: /
+            backend:
+              service: 
+                name: interests-front-cluster-ip
+                port: 
+                  number: 80
+          - pathType: ImplementationSpecific
+            path: /api
+            backend:
+              service:
+                name: interests-back-cluster-ip
+                port:
+                  number: 3000
+    - host: youdaodai.com
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: /
+            backend:
+              service: 
+                name: interests-front-cluster-ip
+                port: 
+                  number: 80
+          - pathType: ImplementationSpecific
+            path: /api
+            backend:
+              service: 
+                name: interests-back-cluster-ip
+                port: 
+                  number: 3000
+    - host: license.youdaodai.com
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: /
+            backend:
+              service: 
+                name: front-cluster-ip
+                port: 
+                  number: 80
+          - pathType: ImplementationSpecific
+            path: /graphql
+            backend:
+              service: 
+                name: back-cluster-ip
+                port: 
+                  number: 8080
+          - pathType: ImplementationSpecific
+            path: /api_test
+            backend:
+              service: 
+                name: back-cluster-ip
+                port: 
+                  number: 8080
+          - pathType: ImplementationSpecific
+            path: /oauth2
+            backend:
+              service: 
+                name: back-cluster-ip
+                port:
+                  number: 8080
+    - host: compliance.openeuler.org
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: /
+            backend:
+              service: 
+                name: front-cluster-ip
+                port: 
+                  number: 80
+          - pathType: ImplementationSpecific
+            path: /graphql
+            backend:
+              service: 
+                name: back-cluster-ip
+                port: 
+                  number: 8080
+          - pathType: ImplementationSpecific
+            path: /api_test
+            backend:
+              service: 
+                name: back-cluster-ip
+                port: 
+                  number: 8080
+          - pathType: ImplementationSpecific
+            path: /ci
+            backend:
+              service: 
+                name: wrapper-cluster-ip
+                port: 
+                  number: 8081
+          - pathType: ImplementationSpecific
+            path: /github_redirect
+            backend:
+              service: 
+                name: back-cluster-ip
+                port: 
+                  number: 8080
+          - pathType: ImplementationSpecific
+            path: /gitee_redirect
+            backend:
+              service: 
+                name: back-cluster-ip
+                port: 
+                  number: 8080
+          - pathType: Prefix
+            path: /es_endpoint
+            backend:
+              service: 
+                name: wrapper-cluster-ip
+                port: 
+                  number: 8081
+          - pathType: Prefix
+            path: /lvmeng
+            backend:
+              service: 
+                name: lvmeng-cluster-ip
+                port: 
+                  number: 8080
+            
+             

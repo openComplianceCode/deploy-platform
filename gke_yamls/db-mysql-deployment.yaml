@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-mysql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: db-mysql
+  template:
+    metadata:
+      labels:
+        component: db-mysql
+    spec:
+      volumes:
+        - name: db-mysql-pv
+          persistentVolumeClaim:
+            claimName: db-mysql-pvc
+      containers:
+        - name: db-mysql
+          image: mysql:5
+          resources:
+            limits:
+              memory: "200Mi"
+            requests:
+              memory: "100Mi"
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: db-mysql-pv
+              mountPath: /var/lib/mysql
+              subPath: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-password
+                  key: MYSQL_PASSWORD
