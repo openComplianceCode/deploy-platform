@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: db-mysql-cluster-ip-set
 spec:
-  ClusterIP: None
+  clusterIP: None
   ports:
     - protocol: TCP
       port: 3306
