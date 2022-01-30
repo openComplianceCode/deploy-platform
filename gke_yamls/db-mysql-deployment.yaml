@@ -1,13 +1,13 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
-  name: db-mysql-statefulset
+  name: db-mysql-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
       component: db-mysql
-  serviceName: db-mysql-cluster-ip-set
+  serviceName: db-mysql-cluster-ip
   template:
     metadata:
       labels:
