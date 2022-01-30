@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       component: db-mysql
-  serviceName: db-mysql-cluster-ip
+  serviceName: db-mysql-cluster-ip-set
   template:
     metadata:
       labels:
