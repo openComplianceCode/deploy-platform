@@ -7,12 +7,12 @@ spec:
   selector:
     matchLabels:
       component: db-mysql
+  serviceName: db-mysql-cluster-ip
   template:
     metadata:
       labels:
         component: db-mysql
     spec:
-      serviceName: db-mysql-cluster-ip
       volumes:
         - name: db-mysql-pv
           persistentVolumeClaim:
