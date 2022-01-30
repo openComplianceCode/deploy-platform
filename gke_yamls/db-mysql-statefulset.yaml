@@ -12,6 +12,7 @@ spec:
       labels:
         component: db-mysql
     spec:
+      serviceName: db-mysql-cluster-ip
       volumes:
         - name: db-mysql-pv
           persistentVolumeClaim:
