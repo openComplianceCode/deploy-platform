@@ -17,6 +17,13 @@ spec:
           image: aleczheng/license-back
           ports:
             - containerPort: 8080
+          resources:
+            limits:
+              cpu: 1
+              memory: 4Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
           env:
             - name: MYSQL_HOST
               value: db-mysql-cluster-ip
