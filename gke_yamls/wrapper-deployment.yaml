@@ -19,10 +19,8 @@ spec:
             - containerPort: 8081
           resources:
             limits:
-              cpu: 1
               memory: 4Gi
             requests:
-              cpu: 500m
               memory: 512Mi
           env:
             - name: MYSQL_HOST
@@ -33,7 +31,7 @@ spec:
                   name: mysql-password
                   key: MYSQL_PASSWORD
             - name: ES_URL
-              value: 'https://quickstart-es-http:9200'
+              value: "https://quickstart-es-http:9200"
             - name: ES_PASSWORD
               valueFrom:
                 secretKeyRef:

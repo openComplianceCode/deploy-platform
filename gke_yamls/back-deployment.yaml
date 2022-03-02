@@ -19,10 +19,8 @@ spec:
             - containerPort: 8080
           resources:
             limits:
-              cpu: 1
               memory: 4Gi
             requests:
-              cpu: 500m
               memory: 512Mi
           env:
             - name: MYSQL_HOST
@@ -48,7 +46,7 @@ spec:
                   name: jwt-secret
                   key: JWT_SECRET
             - name: ES_URL
-              value: 'https://quickstart-es-http:9200'
+              value: "https://quickstart-es-http:9200"
             - name: ES_PASSWORD
               valueFrom:
                 secretKeyRef:
