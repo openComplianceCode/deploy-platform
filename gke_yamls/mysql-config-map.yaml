@@ -4,4 +4,4 @@ metadata:
   name: tcp-services
   namespace: ingress-nginx
 data:
-  proxied-tcp-3306: "default/db-mysql-cluster-ip:3306"
+  3306: "default/db-mysql-cluster-ip:3306"
