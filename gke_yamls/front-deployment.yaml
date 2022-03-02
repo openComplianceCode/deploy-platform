@@ -15,6 +15,10 @@ spec:
       containers:
         - name: front
           image: aleczheng/license-front
+          resources:
+            requests:
+              cpu: "5m"
+              memory: "200Mi"
           ports:
             - containerPort: 80
           env:

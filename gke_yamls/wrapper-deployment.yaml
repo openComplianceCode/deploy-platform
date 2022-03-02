@@ -15,6 +15,10 @@ spec:
       containers:
         - name: wrapper
           image: aleczheng/tool-wrapper
+          resources:
+            requests:
+              cpu: "5m"
+              memory: "200Mi"
           ports:
             - containerPort: 8081
           env:

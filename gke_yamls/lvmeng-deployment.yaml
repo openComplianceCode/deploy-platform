@@ -15,6 +15,9 @@ spec:
       containers:
         - name: lvmeng
           image: plosa/lvmeng:2.0
+          resources:
+            requests:
+              cpu: "5m"
+              memory: "300Mi"
           ports:
             - containerPort: 8080
- 
