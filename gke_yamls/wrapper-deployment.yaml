@@ -17,11 +17,6 @@ spec:
           image: aleczheng/tool-wrapper
           ports:
             - containerPort: 8081
-          resources:
-            limits:
-              memory: 4Gi
-            requests:
-              memory: 512Mi
           env:
             - name: MYSQL_HOST
               value: db-mysql-cluster-ip
