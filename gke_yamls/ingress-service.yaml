@@ -22,14 +22,14 @@ spec:
     - host: www.youdaodai.com
       http:
         paths:
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /
             backend:
-              service: 
+              service:
                 name: interests-front-cluster-ip
-                port: 
+                port:
                   number: 80
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /api
             backend:
               service:
@@ -39,109 +39,107 @@ spec:
     - host: youdaodai.com
       http:
         paths:
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /
             backend:
-              service: 
+              service:
                 name: interests-front-cluster-ip
-                port: 
+                port:
                   number: 80
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /api
             backend:
-              service: 
+              service:
                 name: interests-back-cluster-ip
-                port: 
+                port:
                   number: 3000
     - host: license.youdaodai.com
       http:
         paths:
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /
             backend:
-              service: 
+              service:
                 name: front-cluster-ip
-                port: 
+                port:
                   number: 80
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /graphql
             backend:
-              service: 
+              service:
                 name: back-cluster-ip
-                port: 
+                port:
                   number: 8080
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /api_test
             backend:
-              service: 
+              service:
                 name: back-cluster-ip
-                port: 
+                port:
                   number: 8080
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /oauth2
             backend:
-              service: 
+              service:
                 name: back-cluster-ip
                 port:
                   number: 8080
     - host: compliance.openeuler.org
       http:
         paths:
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /
             backend:
-              service: 
+              service:
                 name: front-cluster-ip
-                port: 
+                port:
                   number: 80
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /graphql
             backend:
-              service: 
+              service:
                 name: back-cluster-ip
-                port: 
+                port:
                   number: 8080
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /api_test
             backend:
-              service: 
+              service:
                 name: back-cluster-ip
-                port: 
+                port:
                   number: 8080
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /ci
             backend:
-              service: 
+              service:
                 name: wrapper-cluster-ip
-                port: 
+                port:
                   number: 8081
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /github_redirect
             backend:
-              service: 
+              service:
                 name: back-cluster-ip
-                port: 
+                port:
                   number: 8080
-          - pathType: ImplementationSpecific
+          - pathType: Prefix
             path: /gitee_redirect
             backend:
-              service: 
+              service:
                 name: back-cluster-ip
-                port: 
+                port:
                   number: 8080
           - pathType: Prefix
             path: /es_endpoint
             backend:
-              service: 
+              service:
                 name: wrapper-cluster-ip
-                port: 
+                port:
                   number: 8081
           - pathType: Prefix
             path: /lvmeng
             backend:
-              service: 
+              service:
                 name: lvmeng-cluster-ip
-                port: 
+                port:
                   number: 8080
-            
-             
