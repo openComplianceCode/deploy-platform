@@ -78,3 +78,10 @@ spec:
                 name: lvmeng-cluster-ip
                 port:
                   number: 8080
+          - pathType: Prefix
+            path: /search_conflict
+            backend:
+              service:
+                name: compatiable-cluster-ip
+                port:
+                  number: 5000
