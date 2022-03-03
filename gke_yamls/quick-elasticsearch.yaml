@@ -9,20 +9,3 @@ spec:
       count: 1
       config:
         node.store.allow_mmap: false
-      volumeClaimTemplates:
-        - metadata:
-            name: elasticsearch-data
-          spec:
-            accessModes:
-              - ReadWriteOnce
-            resources:
-              requests:
-                storage: 20Gi
-            storageClassName: standard
-      podTemplate:
-        spec:
-          initContainers:
-            - name: sysctl
-              securityContext:
-                privileged: true
-              command: ["sh", "-c", "sysctl -w vm.max_map_count=262144"]
