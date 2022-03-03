@@ -15,6 +15,10 @@ spec:
       containers:
         - name: back
           image: aleczheng/license-back
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
           ports:
             - containerPort: 8080
           env:
