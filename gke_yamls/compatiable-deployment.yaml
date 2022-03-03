@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: compatiable
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: compatiable
+  template:
+    metadata:
+      labels:
+        component: compatiable
+    spec:
+      containers:
+        - name: compatiable
+          image: haohaoxuexi2/compatibility:v1
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "1Gi"
+          ports:
+            - containerPort: 5000
