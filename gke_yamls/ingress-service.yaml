@@ -18,6 +18,7 @@ spec:
     - hosts:
         - compliance.openeuler.org
       secretName: compliance-openeuler-org
+  rules:
     - host: compliance.openeuler.org
       http:
         paths:
