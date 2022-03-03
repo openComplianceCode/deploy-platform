@@ -19,3 +19,14 @@ spec:
               requests:
                 storage: 20Gi
             storageClassName: standard
+      podTemplate:
+        spec:
+          containers:
+            - name: elasticsearch
+              env:
+                - name: ES_JAVA_OPTS
+                  value: -Xms1g -Xmxg
+              resources:
+                requests:
+                  memory: 1.5Gi
+                  cpu: 250m
