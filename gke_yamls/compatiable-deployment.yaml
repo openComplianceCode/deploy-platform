@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: compatiable
-          image: haohaoxuexi2/compatibility:v1
+          image: haohaoxuexi2/compatibility:v2
           resources:
             requests:
               cpu: "250m"
