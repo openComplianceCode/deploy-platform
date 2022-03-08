@@ -36,7 +36,7 @@ services:
     networks:
       - license-network
   compatiableTable:
-    image: haohaoxuexi2/compatibility:v1
+    image: haohaoxuexi2/compatibility:v2
     container_name: compatibility
     ports:
       - 8083:5000
