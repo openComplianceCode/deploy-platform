@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: certer
-          image: aleczheng/cert-nginx
+          image: aleczheng/cert-nginx:v2
           resources:
             requests:
               cpu: "250m"
