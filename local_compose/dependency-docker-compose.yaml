@@ -29,7 +29,7 @@ services:
     networks:
       - license-network
   lvmeng:
-    image: plosa/lvmeng:2.0
+    image: plosa/lvmeng:4.0
     container_name: lvmeng
     ports:
       - 8082:8080
