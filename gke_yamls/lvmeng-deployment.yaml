@@ -17,7 +17,7 @@ spec:
           image: plosa/lvmeng:4.0
           resources:
             requests:
-              cpu: "250m"
+              cpu: "1000m"
               memory: "2Gi"
           ports:
             - containerPort: 8080
