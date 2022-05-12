@@ -79,3 +79,10 @@ spec:
                 name: compatiable-cluster-ip
                 port:
                   number: 5000
+          - pathType: Prefix
+            path: /sca
+            backend:
+              service:
+                name: issue-scanner-cluster-ip
+                port:
+                  number: 8868

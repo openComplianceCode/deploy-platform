@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: issue-scanner-cluster-ip
+spec:
+  type: ClusterIP
+  selector:
+    component: issue-scanner
+  ports:
+    - port: 8868
+      targetPort: 8868
