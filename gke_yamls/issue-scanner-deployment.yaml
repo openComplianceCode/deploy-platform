@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: issue-scanner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: issue-scanner
+  template:
+    metadata:
+      labels:
+        component: issue-scanner
+    spec:
+      volumes:
+        - name: issue-scanner-pvc
+          persistentVolumeClaim:
+            claimName: issue-scanner-pvc
+      containers:
+        - name: issue-scanner
+          image: plosa/issue-scanner:1.0
+          resources:
+            requests:
+              cpu: "1000m"
+              memory: "2Gi"
+          ports:
+            - containerPort: 8868
+          volumeMounts:
+            - name: issue-scanner-pvc
+              mountPath: /home/giteeFile
+          env:
+            - name: MYSQL_HOST
+              value: issue-scanner-cluster-ip
+            - name: MYSQL_USER
+              value: root
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-password
+                  key: MYSQL_PASSWORD
+            - name: MYSQL_DB_NAME
+              value: license
+            - name: MYSQL_PORT
+              value: 3306
