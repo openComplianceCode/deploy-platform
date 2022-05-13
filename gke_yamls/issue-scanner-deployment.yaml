@@ -41,4 +41,4 @@ spec:
             - name: MYSQL_DB_NAME
               value: license
             - name: MYSQL_PORT
-              value: 3306
+              value: "3306"
