@@ -13,7 +13,7 @@ spec:
         component: issue-scanner
     spec:
       volumes:
-        - name: issue-scanner-pvc
+        - name: issue-scanner-pvs
           persistentVolumeClaim:
             claimName: issue-scanner-pvc
       containers:
@@ -26,7 +26,7 @@ spec:
           ports:
             - containerPort: 8868
           volumeMounts:
-            - name: issue-scanner-pvc
+            - name: issue-scanner-pvs
               mountPath: /home/giteeFile
           env:
             - name: MYSQL_HOST
