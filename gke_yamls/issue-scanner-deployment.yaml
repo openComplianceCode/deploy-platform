@@ -18,7 +18,7 @@ spec:
             claimName: issue-scanner-pvc
       containers:
         - name: issue-scanner
-          image: plosa/issue-scanner:1.0
+          image: plosa/issue-scanner:1.1
           resources:
             requests:
               cpu: "250m"
