@@ -18,10 +18,10 @@ spec:
             claimName: issue-scanner-pvc
       containers:
         - name: issue-scanner
-          image: plosa/issue-scanner:1.0
+          image: plosa/issue-scanner:1.8
           resources:
             requests:
-              cpu: "250m"
+              cpu: "500m"
               memory: "1Gi"
           ports:
             - containerPort: 8868
@@ -30,10 +30,10 @@ spec:
               mountPath: /home/giteeFile
           env:
             - name: MYSQL_HOST
-              value: issue-scanner-cluster-ip
+              value: db-mysql-cluster-ip
             - name: MYSQL_USER
               value: root
-            - name: MYSQL_ROOT_PASSWORD
+            - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql-password
